@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->integer('role_id');
-            $table->enum('role_name',['user'])->default('user');
-            $table->rememberToken();
+            $table->text('settings_key');
+            $table->text('settings_value');
+            $table->text('settings_description');
+            $table->enum('settings_type',['website information'])->nullable();
+            $table->enum('settings_input_type',['text','number','checkbox','file'])->default('text');
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('settings');
     }
 };
