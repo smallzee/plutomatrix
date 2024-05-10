@@ -20,7 +20,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('role_id');
-            $table->enum('role_name',['user'])->default('user');
+            $table->enum('role_type',['client'])->default('client');
+            $table->integer('status')->default(1);
+            $table->integer('referral_user_id')->default(0);
+            $table->string('referral_code')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
