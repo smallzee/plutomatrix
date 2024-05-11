@@ -13,7 +13,7 @@
         @csrf
         <fieldset class="mt-16">
             <x-input-label for="email" :value="__('Email Address')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="Email Address" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="email" placeholder="Email Address" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </fieldset>
         <fieldset class="mt-16 mb-12">

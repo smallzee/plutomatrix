@@ -11,8 +11,11 @@
     <link rel="stylesheet" href="{{asset('assets/guest/fonts/font-icons.css')}}">
     <link rel="stylesheet" href="{{asset('assets/guest/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/guest/css/styles.css')}}"/>
+    <link rel="shortcut icon" href="{{static_asset('logo.png')}}" type="image/x-icon">
 </head>
 <body>
+
+@include('flash')
 
 <div class="header-style2 fixed-top bg-menuDark">
     <div class="d-flex justify-content-between align-items-center gap-14">

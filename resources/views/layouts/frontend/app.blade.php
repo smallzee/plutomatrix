@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $page_title }} -  {{ config('app.name') }}</title>
     <link rel="stylesheet" href="{{asset('assets/frontend/app/dist/app.css')}}">
+    <link rel="shortcut icon" href="{{static_asset('logo.png')}}" type="image/x-icon">
 </head>
 <body class="home-main header-fixed" data-magic-cursor="show" >
 

@@ -1,41 +1,56 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ $page_title }} - {{ config('app.name') }}</title>
+    <link rel="stylesheet" href="{{asset('assets/backend/dist/css/app.css')}}">
+</head>
+<body>
 
-    <div class="header fixed-top bg-surface">
-        <a href="#" class="left back-btn"><i class="icon-left-btn"></i></a>
+<div class="before:fixed before:top-0 before:z-[-1] before:h-screen before:w-screen before:bg-gradient-to-b before:from-theme-1 before:to-theme-2 before:transition-[opacity,height] before:duration-300 before:ease-in-out before:content-['']">
+    <div class="container relative">
+        <div class="flex min-h-screen w-full items-center justify-center p-5 md:p-20">
+            <div class="intro-y w-96">
+                <img class="mx-auto w-16" src="{{ static_asset('logo.png') }}" alt="{{config('app.name')}}">
+                <div class="mt-8 text-center text-2xl font-medium text-white dark:text-slate-300">Admin Login
+                </div>
+               <form method="post" action="{{route('login.store')}}">
+                   @csrf
+                   <div class="box box--stacked relative mt-14 max-w-[450px] px-5 py-8">
+
+                       <x-input-label for="email" :value="__('Email Address')" />
+                       <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="email" placeholder="Email Address" />
+                       <x-input-error :messages="$errors->get('email')" class="mt-2" />
+
+                       <x-input-label for="password" :value="__('Password')" />
+                       <x-text-input id="password" class="block mt-1 w-full"
+                                     type="password"
+                                     name="password"
+                                     required autocomplete="current-password"  placeholder="Password"/>
+
+                       <x-input-error :messages="$errors->get('password')" class="mt-2" />
+
+                       <div class="mt-5 text-center xl:mt-8 xl:text-left">
+                           <button data-tw-merge="" class="transition duration-200 border shadow-sm inline-flex items-center justify-center px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary w-full py-3 xl:mr-3">Login</button>
+                       </div>
+                   </div>
+               </form>
+            </div>
+        </div>
     </div>
+</div>
 
-    <h4 class="text-center mb-3">{{ __('Admin Login') }}</h4>
-    <h6 class="text-center">Please provide login credential details</h6>
-
-    <form action="{{ route('login.store') }}" method="post" class="mt-16">
-        @csrf
-        <fieldset class="mt-16">
-            <x-input-label for="email" :value="__('Email Address')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="Email Address" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </fieldset>
-        <fieldset class="mt-16 mb-12">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                          type="password"
-                          name="password"
-                          required autocomplete="current-password"  placeholder="Password"/>
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </fieldset>
-
-        @if (Route::has('password.request'))
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                {{ __('Forgot your password?') }}
-            </a>
-        @endif
-        <x-primary-button class="ml-3 mt-4">
-            {{ __('Log in') }}
-        </x-primary-button>
-        <p class="mt-20 text-center text-small">Already have a Account? &ensp;<a href="{{route('register')}}">Sign up</a></p>
-    </form>
-
-</x-guest-layout>
+<!-- BEGIN: Vendor JS Assets-->
+<script src="{{asset('assets/backend/dist/js/vendors/dom.js')}}"></script>
+<script src="{{asset('assets/backend/dist/js/vendors/tailwind-merge.js')}}"></script>
+<script src="{{asset('assets/backend/dist/js/vendors/lucide.js')}}"></script>
+<script src="{{asset('assets/backend/dist/js/vendors/modal.js')}}"></script>
+<script src="{{asset('assets/backend/dist/js/components/base/theme-color.js')}}"></script>
+<script src="{{asset('assets/backend/dist/js/components/base/lucide.js')}}"></script> <!-- END: Vendor JS Assets-->
+<!-- BEGIN: Pages, layouts, components JS Assets-->
+<!-- END: Pages, layouts, components JS Assets-->
+</body>
+</html>

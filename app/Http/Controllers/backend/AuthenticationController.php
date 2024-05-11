@@ -18,6 +18,10 @@ class AuthenticationController extends Controller
     public function index()
     {
         //
+        if (auth()->check() && auth()->user()->role_id > 1){
+            return redirect()->intended(RouteServiceProvider::BACKEND);
+        }
+
         $page_title = "Admin Login";
         return view('backend.auth.login',compact('page_title'));
     }
