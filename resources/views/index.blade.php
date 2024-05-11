@@ -1,8 +1,6 @@
 @extends('layouts.frontend.app')
 
 @push('content')
-
-
     <!-- Banner Top -->
     <section class="banner-top style-1">
         <div class="container">
