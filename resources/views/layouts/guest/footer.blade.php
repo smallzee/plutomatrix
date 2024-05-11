@@ -1,6 +1,6 @@
 <div class="menubar-footer footer-fixed">
     <ul class="inner-bar">
-        <li class="active">
+        <li class="">
             <a href="home.html">
                 <i class="icon icon-home2"></i>
                 Home
@@ -8,20 +8,20 @@
         </li>
         <li>
             <a href="exchange-market.html">
-                <i class="icon icon-exchange"></i>
-                Exchange
+                <i class="icon icon-wallet"></i>
+                Deposit
             </a>
         </li>
         <li>
             <a href="earn.html">
                 <i class="icon icon-earn"></i>
-                Earn
+                Invest
             </a>
         </li>
         <li>
             <a href="wallet.html">
-                <i class="icon icon-wallet"></i>
-                Wallet
+                <i class="icon icon-exchange"></i>
+                Transactions
             </a>
         </li>
     </ul>
