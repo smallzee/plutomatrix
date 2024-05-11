@@ -19,27 +19,6 @@
                             <ul id="menu-primary-menu" class="menu">
                                 <li class="menu-item menu-item-has-children current-menu-item">
                                     <a href="#">Home Page</a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item current-item"><a href="index.html">Home Main</a></li>
-                                        <li class="menu-item"><a href="home-nft.html">Home NFT 01</a></li>
-                                        <li class="menu-item"><a href="home-nft-v2.html">Home NFT 02</a></li>
-                                        <li class="menu-item"><a href="home-music.html">Home Music</a></li>
-                                        <li class="menu-item"><a href="home-defi-v1.html">Home Defi 01</a></li>
-                                        <li class="menu-item"><a href="home-defi-v2.html">Home Defi 02</a></li>
-                                        <li class="menu-item"><a href="home-defi-v3.html">Home Defi 03</a></li>
-                                        <li class="menu-item"><a href="home-defi-v4.html">Home Defi 04</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item menu-item-has-children">
-                                    <a href="#">Home Dashboad</a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item"><a href="dashboard-tokensales.html">Token Sales</a></li>
-                                        <li class="menu-item"><a href="dashboard-features.html">Our Feature</a></li>
-                                        <li class="menu-item"><a href="dashboard-roadmap.html">Road Map</a></li>
-                                        <li class="menu-item"><a href="dashboard-creations.html">Our Creations</a></li>
-                                        <li class="menu-item"><a href="dashboard-team.html">Our Team</a></li>
-                                        <li class="menu-item"><a href="dashboard-faq.html">FaQs</a></li>
-                                    </ul>
                                 </li>
                                 <li class="menu-item menu-item-has-children">
                                     <a href="#">Blog Page</a>
@@ -66,7 +45,6 @@
                                         <li class="menu-item"><a href="button.html">Button</a></li>
 
                                         <li class="menu-item"><a href="footer.html">Footer</a></li>
-
 
                                         <li class="menu-item"><a href="faq.html">Faq</a></li>
                                         <li class="menu-item"><a href="icon.html">Icon</a></li>
