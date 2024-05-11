@@ -19,14 +19,12 @@
     </head>
     <body >
 
-
-
     <div class="pt-45 pb-20">
         <div class="tf-container">
 
             <div>
                 <center>
-                    <img src="{{static_asset('logo.png')}}" style="width: 150px; height: 100px;" alt="">
+                    <img src="{{static_asset('logo.png')}}" class="mb-3" style="width: 150px; height: 100px;" alt="">
                 </center>
             </div>
 

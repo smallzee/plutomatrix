@@ -6,10 +6,10 @@
         <a href="#" class="left back-btn"><i class="icon-left-btn"></i></a>
     </div>
 
-    <h4 class="text-center mb-3">{{ __('Login') }}</h4>
+    <h4 class="text-center mb-3">{{ __('Admin Login') }}</h4>
     <h6 class="text-center">Please provide login credential details</h6>
 
-    <form action="{{ route('login') }}" method="post" class="mt-16">
+    <form action="{{ route('login.store') }}" method="post" class="mt-16">
         @csrf
         <fieldset class="mt-16">
             <x-input-label for="email" :value="__('Email Address')" />
