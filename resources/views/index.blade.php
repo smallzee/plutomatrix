@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-xl-7 col-md-12">
                     <div class="about__image">
-                        <img src="assets/images/layout/Graphic.png" alt="ICOLand">
+                        <img src="{{static_asset('layout/Graphic.png')}}" alt="ICOLand">
                     </div>
                 </div>
                 <div class="col-xl-5 col-md-12">

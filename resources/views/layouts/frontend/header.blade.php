@@ -17,52 +17,21 @@
                     <div class="header__right">
                         <nav id="main-nav" class="main-nav">
                             <ul id="menu-primary-menu" class="menu">
-                                <li class="menu-item menu-item-has-children current-menu-item">
-                                    <a href="#">Home Page</a>
-                                </li>
-                                <li class="menu-item menu-item-has-children">
-                                    <a href="#">Blog Page</a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item"><a href="blog-v1.html">Blog Style 01</a></li>
-                                        <li class="menu-item"><a href="blog-v2.html">Blog Style 02</a></li>
-                                        <li class="menu-item"><a href="blog-v3.html">Blog Style 03</a></li>
-
-                                    </ul>
-                                </li>
                                 <li class="menu-item">
-                                    <a href="connect-wallet.html">Connect Wallet</a>
+                                    <a href="{{url('/')}}">Home</a>
                                 </li>
-                                <li class="menu-item menu-item-has-children">
-                                    <a href="#">Elements</a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item"><a href="about-us.html">About Us</a></li>
-                                        <li class="menu-item"><a href="features.html">Features</a></li>
-                                        <li class="menu-item"><a href="roadmap.html">Road Map</a></li>
-                                        <li class="menu-item"><a href="document.html">Documents</a></li>
-                                        <li class="menu-item"><a href="our-team.html">Our Team</a></li>
-                                        <li class="menu-item"><a href="partner.html">Partner</a></li>
-                                        <li class="menu-item"><a href="token-sales.html">Token Sale</a></li>
-                                        <li class="menu-item"><a href="button.html">Button</a></li>
 
-                                        <li class="menu-item"><a href="footer.html">Footer</a></li>
-
-                                        <li class="menu-item"><a href="faq.html">Faq</a></li>
-                                        <li class="menu-item"><a href="icon.html">Icon</a></li>
-                                    </ul>
+                                <li class="menu-item">
+                                    <a href="">Our Service</a>
                                 </li>
-                                <li class="menu-item menu-item-has-children">
-                                    <a href="#">Pages</a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item"><a href="sign-in.html">Sign In</a></li>
-                                        <li class="menu-item"><a href="sign-up.html">Sign Up</a></li>
-                                        <li class="menu-item"><a href="page-404.html">Page 404</a></li>
-                                        <li class="menu-item"><a href="comingsoon.html">Coming Soon</a></li>
-                                    </ul>
+
+                                <li class="menu-item">
+                                    <a href="">Packages</a>
                                 </li>
                             </ul>
                         </nav>
                         <div class="group-button">
-                            <a class="btn-action" href="sign-in.html">
+                            <a class="btn-action" href="{{route('login')}}">
                                 <span>LOGIN</span>
                             </a>
                         </div>
