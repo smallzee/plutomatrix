@@ -18,7 +18,8 @@ class RolesController extends Controller
     {
         //
         $page_title = "Roles";
-        return view('backend.roles.index',compact('page_title'));
+        $roles = Roles::orderBy('id','desc')->paginate(10);
+        return view('backend.roles.index',compact('page_title','roles'));
     }
 
     /**
