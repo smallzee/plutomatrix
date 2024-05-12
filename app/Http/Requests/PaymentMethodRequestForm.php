@@ -27,7 +27,7 @@ class PaymentMethodRequestForm extends FormRequest
         return [
             //
             'name'=>['required','max:50','string','unique:'.PaymentMethod::class],
-            'wallet_adddress'=>['required','max:255','string']
+            'wallet_address'=>['required','max:255','string']
         ];
     }
 }

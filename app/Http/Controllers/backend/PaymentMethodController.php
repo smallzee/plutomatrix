@@ -18,7 +18,8 @@ class PaymentMethodController extends Controller
     {
         //
         $page_title = "Payment Method";
-        return view('backend.payment-method.index',compact('page_title'));
+        $payment_method = PaymentMethod::paginate(10);
+        return view('backend.payment-method.index',compact('page_title','payment_method'));
     }
 
     /**
@@ -44,8 +45,6 @@ class PaymentMethodController extends Controller
         //
         $request->validated();
 
-        return $request;
-
         PaymentMethod::create([
             'name'=>$request->name,
             'wallet_address'=>$request->wallet_address
@@ -63,6 +62,7 @@ class PaymentMethodController extends Controller
     public function show($id)
     {
         //
+        abort(404);
     }
 
     /**
@@ -74,6 +74,9 @@ class PaymentMethodController extends Controller
     public function edit($id)
     {
         //
+        $page_title = "Payment Method";
+        $payment_method = PaymentMethod::find($id);
+        return view('backend.payment-method.edit',compact('payment_method','page_title'));
     }
 
     /**
@@ -86,6 +89,15 @@ class PaymentMethodController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $page_title = "Edit Payment Method";
+        $payment_method = PaymentMethod::find($id);
+        $payment_method->update([
+            'name'=>$request->name,
+            'wallet_address'=>$request->wallet_address
+        ]);
+        $payment_method->save();
+
+        return back()->with('alert_info','Payment Method has been updated successfully');
     }
 
     /**
@@ -97,5 +109,6 @@ class PaymentMethodController extends Controller
     public function destroy($id)
     {
         //
+        abort(404);
     }
 }
