@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CustomMessageRequestForm;
 use Illuminate\Http\Request;
 
 class CustomMessageController extends Controller
@@ -36,9 +37,10 @@ class CustomMessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CustomMessageRequestForm $request)
     {
         //
+        $request->validated();
     }
 
     /**
