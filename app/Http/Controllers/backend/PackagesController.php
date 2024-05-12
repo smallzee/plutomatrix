@@ -18,7 +18,8 @@ class PackagesController extends Controller
     {
         //
         $page_title = "All Packages";
-        return view('backend.package.index',compact('page_title'));
+        $packages = Packages::paginate(10);
+        return view('backend.package.index',compact('page_title','packages'));
     }
 
     /**
@@ -65,6 +66,7 @@ class PackagesController extends Controller
     public function show($id)
     {
         //
+        abort(404);
     }
 
     /**
@@ -76,6 +78,9 @@ class PackagesController extends Controller
     public function edit($id)
     {
         //
+        $package = Packages::find($id);
+        $page_title = "Edit Package";
+        return view('backend.package.edit',compact('package','page_title'));
     }
 
     /**
@@ -85,9 +90,24 @@ class PackagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PackageRequestForm $request, $id)
     {
         //
+        $request->validated();
+
+        $package = Packages::find($id);
+        $package->update([
+            'name'=>$request->name,
+            'min_deposit'=>$request->min_deposit,
+            'max_deposit'=>$request->max_deposit,
+            'duration'=>$request->duration,
+            'interest'=>$request->interest,
+            'referral_percentage'=>$request->referral_percentage
+        ]);
+        $package->save();
+
+        return back()->with('alert_info','Package has been updated successfully');
+
     }
 
     /**
