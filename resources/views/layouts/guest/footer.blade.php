@@ -20,8 +20,8 @@
         </li>
         <li>
             <a href="wallet.html">
-                <i class="icon icon-exchange"></i>
-                Transactions
+                <i class="icon icon-user"></i>
+                Profile
             </a>
         </li>
     </ul>
