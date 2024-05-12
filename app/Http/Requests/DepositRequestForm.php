@@ -26,7 +26,8 @@ class DepositRequestForm extends FormRequest
         return [
             //
             'amount'=>['required','numeric','gt:0'],
-            'payment_method'=>['required','numeric','gt:0']
+            'payment_method'=>['required','numeric','gt:0'],
+            'wallet_address'=>['required']
         ];
     }
 }
