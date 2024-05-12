@@ -3,6 +3,7 @@
 <p>Dear, {{ $name }}</p>
 
 <ol>
+    <li>Email Address : {{ $email }}</li>
     <li>Amount : ${!! number_format($amount,2) !!}</li>
     <li>Status : {{ $status }}</li>
     <li>Reference : {{ $reference }}</li>

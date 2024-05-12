@@ -20,7 +20,7 @@ class DepositTransactions extends Mailable
      *
      * @return void
      */
-    public function __construct($name,$payment_method,$amount,$status,$reference)
+    public function __construct($name,$payment_method,$amount,$status,$reference,$email)
     {
         //
         $this->name = $name;
@@ -28,6 +28,7 @@ class DepositTransactions extends Mailable
         $this->amount = $amount;
         $this->status = $status;
         $this->reference = $reference;
+        $this->email = $email;
     }
 
     /**

@@ -60,7 +60,7 @@ class DepositController extends Controller
             'reference'=>$reference,
         ]);
 
-        Mail::to(get_settings('official_email'))->send(new DepositTransactions("Admin",$payment_method->name,$request->amount,"processing",$reference));
+        Mail::to(get_settings('official_email'))->send(new DepositTransactions("Admin",$payment_method->name,$request->amount,"processing",$reference,auth()->user()->email));
 
         return back()->with('alert_info','Your payment has been sent for processing');
     }
