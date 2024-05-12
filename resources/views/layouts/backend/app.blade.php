@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="{{asset('assets/backend/dist/css/vendors/simplebar.css')}}">
     <link rel="stylesheet" href="{{asset('assets/backend/dist/css/themes/waveform.css')}}">
     <link rel="stylesheet" href="{{asset('assets/backend/dist/css/app.css')}}"> <!-- END: CSS Assets-->
+
+    <script type="text/javascript" src="{{asset('assets/guest/js/jquery.min.js')}}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 

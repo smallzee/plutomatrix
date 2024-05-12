@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="{{asset('assets/guest/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/guest/css/styles.css')}}"/>
     <link rel="shortcut icon" href="{{static_asset('logo.png')}}" type="image/x-icon">
+
+    <script type="text/javascript" src="{{asset('assets/guest/js/jquery.min.js')}}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 
@@ -40,7 +43,6 @@
 @include('layouts.guest.footer')
 
 <script type="text/javascript" src="{{asset('assets/guest/js/bootstrap.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets/guest/js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/guest/js/swiper-bundle.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/guest/js/carousel.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/guest/js/apexcharts.js')}}"></script>

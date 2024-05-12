@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RoleRequestForm;
+use App\Models\Roles;
 use Illuminate\Http\Request;
 
 class RolesController extends Controller
@@ -37,9 +39,16 @@ class RolesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoleRequestForm $request)
     {
         //
+        $request->validated();
+
+        Roles::create([
+            'name'=>strtolower($request->name)
+        ]);
+
+        return back()->with('alert_info','Role has been created successfully');
     }
 
     /**
