@@ -18,7 +18,7 @@ class RolesController extends Controller
     {
         //
         $page_title = "Roles";
-        $roles = Roles::orderBy('id','desc')->paginate(10);
+        $roles = Roles::paginate(10);
         return view('backend.roles.index',compact('page_title','roles'));
     }
 
@@ -61,6 +61,7 @@ class RolesController extends Controller
     public function show($id)
     {
         //
+        abort(404);
     }
 
     /**
@@ -72,6 +73,9 @@ class RolesController extends Controller
     public function edit($id)
     {
         //
+        $roles = Roles::find($id);
+        $page_title = "Edit Role";
+        return view('backend.roles.edit',compact('page_title','roles'));
     }
 
     /**
@@ -84,6 +88,13 @@ class RolesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $role = Roles::find($id);
+        $role->update([
+            'name'=>ucwords($request->name)
+        ]);
+        $role->save();
+
+        return back()->with('alert_info','Role has been updated successfully');
     }
 
     /**
@@ -95,5 +106,6 @@ class RolesController extends Controller
     public function destroy($id)
     {
         //
+        abort(404);
     }
 }
