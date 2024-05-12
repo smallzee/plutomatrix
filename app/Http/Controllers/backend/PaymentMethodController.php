@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PaymentMethodRequestForm;
+use App\Models\PaymentMethod;
 use Illuminate\Http\Request;
 
 class PaymentMethodController extends Controller
@@ -15,6 +17,8 @@ class PaymentMethodController extends Controller
     public function index()
     {
         //
+        $page_title = "Payment Method";
+        return view('backend.payment-method.index',compact('page_title'));
     }
 
     /**
@@ -25,6 +29,8 @@ class PaymentMethodController extends Controller
     public function create()
     {
         //
+        $page_title = "Create Payment Method";
+        return view('backend.payment-method.create',compact('page_title'));
     }
 
     /**
@@ -33,9 +39,19 @@ class PaymentMethodController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PaymentMethodRequestForm $request)
     {
         //
+        $request->validated();
+
+        return $request;
+
+        PaymentMethod::create([
+            'name'=>$request->name,
+            'wallet_address'=>$request->wallet_address
+        ]);
+
+        return back()->with('alert_info','Payment Method has been added successfully');
     }
 
     /**
