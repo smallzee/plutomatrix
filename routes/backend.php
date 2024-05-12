@@ -6,6 +6,7 @@ Route::prefix('panel')->group(function () {
         Route::resource('/roles', \App\Http\Controllers\backend\RolesController::class);
         Route::resource('/clients', \App\Http\Controllers\backend\ClientsController::class);
         Route::resource('/administrative', \App\Http\Controllers\backend\AdminController::class);
+        Route::resource('/packages', \App\Http\Controllers\backend\PackagesController::class);
         Route::resource('/payment-method', \App\Http\Controllers\backend\PaymentMethodController::class);
         Route::resource('/deposit', \App\Http\Controllers\backend\DepositController::class);
         Route::resource('/settings', \App\Http\Controllers\backend\SettingsController::class);

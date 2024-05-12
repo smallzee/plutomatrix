@@ -18,8 +18,6 @@ return new class extends Migration
             $table->string('name');
             $table->double('min_deposit')->default(0);
             $table->double('max_deposit')->default(0);
-            $table->double('min_withdrawal')->default(0);
-            $table->double('max_withdrawal')->default(0);
             $table->double('interest')->default(0);
             $table->double('referral_percentage')->default(0);
             $table->string('duration')->nullable();
