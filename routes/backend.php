@@ -7,6 +7,8 @@ Route::prefix('panel')->group(function () {
         Route::resource('/clients', \App\Http\Controllers\backend\ClientsController::class);
         Route::resource('/administrative', \App\Http\Controllers\backend\AdminController::class);
         Route::resource('/payment-method', \App\Http\Controllers\backend\PaymentMethodController::class);
+        Route::resource('/deposit', \App\Http\Controllers\backend\DepositController::class);
+        Route::resource('/settings', \App\Http\Controllers\backend\SettingsController::class);
         Route::get('/logout', function () {
             auth()->logout();;
             return redirect(url('panel/login'))->with('alert_success','You have successfully logged out');

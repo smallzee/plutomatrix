@@ -19,14 +19,25 @@
             <div class="side-menu__link__title">All Clients</div>
         </a>
 
+        <a href="{{route('deposit.index')}}" class="side-menu__link ">
+            <i data-tw-merge="" data-lucide="cloud" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+            <div class="side-menu__link__title">All Deposits</div>
+        </a>
+
         <a href="{{route('administrative.index')}}" class="side-menu__link ">
             <i data-tw-merge="" data-lucide="users" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
             <div class="side-menu__link__title">All Administrative</div>
         </a>
 
+
         <a href="{{route('payment-method.index')}}" class="side-menu__link ">
             <i data-tw-merge="" data-lucide="cloud" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
             <div class="side-menu__link__title">Payment Method</div>
+        </a>
+
+        <a href="{{route('settings.index')}}" class="side-menu__link ">
+            <i data-tw-merge="" data-lucide="settings" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+            <div class="side-menu__link__title">Settings</div>
         </a>
     </li>
 </ul>
