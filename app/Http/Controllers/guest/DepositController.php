@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\client;
+namespace App\Http\Controllers\guest;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class DepositController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,6 @@ class DashboardController extends Controller
     public function index()
     {
         //
-        $page_title = "Dashboard";
-        return view('guest.dashboard',compact('page_title'));
     }
 
     /**
@@ -27,6 +25,8 @@ class DashboardController extends Controller
     public function create()
     {
         //
+        $page_title = "Make Deposit";
+        return view('guest.deposit.create',compact('page_title'));
     }
 
     /**

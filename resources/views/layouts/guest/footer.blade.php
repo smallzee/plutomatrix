@@ -9,7 +9,7 @@
         <li>
             <a href="exchange-market.html">
                 <i class="icon icon-wallet"></i>
-                Deposit
+                All Deposit
             </a>
         </li>
         <li>

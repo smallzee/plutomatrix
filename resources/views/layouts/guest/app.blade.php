@@ -27,6 +27,7 @@
             <a href="{{route('dashboard.index')}}">
                 <img src="{{static_asset('avt/avt2.jpg.png')}}" alt="img" class="avt">
             </a>
+            <h6>{{ ucwords(auth()->user()->name) }}</h6>
         </div>
     </div>
 </div>
@@ -50,9 +51,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="tf-list-item d-flex flex-column gap-8 align-items-center">
+                    <a href="{{route('deposits.create')}}" class="tf-list-item d-flex flex-column gap-8 align-items-center">
                         <span class="box-round bg-surface d-flex justify-content-center align-items-center"><i class="icon icon-wallet"></i></span>
-                        Deposit
+                        Make Deposit
                     </a>
                 </li>
                 <li>
@@ -66,14 +67,14 @@
     </div>
 
     <div class="bg-menuDark tf-container">
-        <div class="pt-12 pb-12 mt-3">
+        <div class="pt-12  pb-12 mt-3">
             <div class="swiper tf-swiper swiper-wrapper-r mt-16" data-space-between="16" data-preview="2.8" data-tablet="2.8" data-desktop="3">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <a href="#" class="coin-box d-block">
                             <div class="coin-logo">
                                 <div class="title">
-                                    <h6>Depsoit</h6>
+                                    <h6>Deposit</h6>
                                 </div>
                             </div>
                             <div class="mt-8 mb-8 coin-chart">
@@ -123,11 +124,15 @@
                 </div>
             </div>
 
+
         </div>
     </div>
+
+    @stack('content')
 </div>
 
-@stack('content')
+
+
 
 @include('layouts.guest.footer')
 
