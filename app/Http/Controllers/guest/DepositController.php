@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\guest;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DepositRequestForm;
 use Illuminate\Http\Request;
 
 class DepositController extends Controller
@@ -35,9 +36,10 @@ class DepositController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DepositRequestForm $request)
     {
         //
+        $request->validated();
     }
 
     /**
