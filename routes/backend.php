@@ -5,6 +5,7 @@ Route::prefix('panel')->group(function () {
         Route::resource('/dashboard', \App\Http\Controllers\backend\DashboardController::class);
         Route::resource('/roles', \App\Http\Controllers\backend\RolesController::class);
         Route::resource('/clients', \App\Http\Controllers\backend\ClientsController::class);
+        Route::resource('/administrative', \App\Http\Controllers\backend\AdminController::class);
         Route::resource('/payment-method', \App\Http\Controllers\backend\PaymentMethodController::class);
         Route::get('/logout', function () {
             auth()->logout();;

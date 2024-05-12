@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class ClientsController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class ClientsController extends Controller
     public function index()
     {
         //
-        $page_title = "All Clients";
-        $users = User::orderBy('id','desc')->whereStatus(1)->where('role_type',['client'])->where('role_id',1)->paginate(10);
+        $page_title = "All Administrative";
+        $users = User::orderBy('id','desc')->whereStatus(1)->where('role_type',['client'])->where('role_id','>',1)->paginate(10);
         return view('backend.client.index',compact('page_title','users'));
     }
 

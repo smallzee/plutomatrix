@@ -32,5 +32,4 @@
         {{ $payment_method->links() }}
     </div>
 
-
 @endpush
