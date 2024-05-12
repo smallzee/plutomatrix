@@ -58,7 +58,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="tf-list-item d-flex flex-column gap-8 align-items-center">
+                    <a href="{{route('referral.index')}}" class="tf-list-item d-flex flex-column gap-8 align-items-center">
                         <span class="box-round bg-surface d-flex justify-content-center align-items-center"><i class="icon icon-exchange"></i></span>
                         Referral
                     </a>
