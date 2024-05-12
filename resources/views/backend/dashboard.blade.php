@@ -1,5 +1,5 @@
 @extends('layouts.backend.app')
-@push('content')
+@push('main')
     <div class="-mb-5 -mt-px ">
         <div class="col-span-12 2xl:col-span-9">
             <div class="grid grid-cols-12 gap-6 pb-6">

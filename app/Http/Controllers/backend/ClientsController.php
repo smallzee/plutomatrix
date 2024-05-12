@@ -5,7 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class RolesController extends Controller
+class ClientsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,6 @@ class RolesController extends Controller
     public function index()
     {
         //
-        $page_title = "Roles";
-        return view('backend.roles.index',compact('page_title'));
     }
 
     /**
@@ -27,8 +25,6 @@ class RolesController extends Controller
     public function create()
     {
         //
-        $page_title = "Create Role";
-        return view('backend.roles.create',compact('page_title'));
     }
 
     /**
