@@ -13,6 +13,18 @@
                         <input type="text" value="50" required class="clear-ip value_input ip-style2">
                         <i class="icon-close"></i>
                     </div>
+
+                    <div class="d-flex mt-3 justify-content-between align-items-center">
+                        <span>Payment Method:</span>
+                    </div>
+                    <div class="mt-12">
+                        <select name="" id="" class="clear-ip value_input ip-style2">
+                            <option>Select</option>
+                            @foreach(\App\Models\PaymentMethod::all() as $value)
+                                <option value="{{ $value->id }}">{{ ucwords($value->name) }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
                 <h5 class="mt-20">Amount Money</h5>
                 <ul class="grid-3 gap-12 mt-16">
