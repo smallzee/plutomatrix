@@ -46,4 +46,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    function referrals(){
+        return $this->hasMany(User::class,'referral_user_id','id')->orderBy('id','DESC');
+    }
+
+    function withdrawals(){
+        return $this->hasMany(Withdrawal::class,'user_id','id')->orderBy('id','DESC');
+    }
+
+    function wallet(){
+        return $this->hasOne(Wallets::class,'user_id','id');
+    }
 }

@@ -15,7 +15,7 @@
                                         </div>
                                     </div>
                                     <div class="mt-6 text-2xl font-medium leading-7">
-                                        ${!! number_format(\App\Models\Wallets::sum('balance'),2) !!}
+                                        ${!! number_format($user->wallet->balance,2) !!}
                                     </div>
                                     <div class="mt-1 text-slate-500">Total Balance</div>
                                 </div>
@@ -29,7 +29,7 @@
                                         </div>
                                     </div>
                                     <div class="mt-6 text-2xl font-medium leading-7">
-                                        ${!! number_format(\App\Models\Wallets::sum('deposit'),2) !!}
+                                        ${!! number_format($user->wallet->deposit,2) !!}
                                     </div>
                                     <div class="mt-1 text-slate-500">Total Deposit</div>
                                 </div>
@@ -43,7 +43,7 @@
 
                                     </div>
                                     <div class="mt-6 text-2xl font-medium leading-7">
-                                        ${!! number_format(\App\Models\Wallets::sum('active_investment'),2) !!}
+                                        ${!! number_format($user->wallet->ative_investment,2) !!}
                                     </div>
                                     <div class="mt-1 text-slate-500">Total Active Investment</div>
                                 </div>
@@ -56,7 +56,7 @@
                                         </div>
                                     </div>
                                     <div class="mt-6 text-2xl font-medium leading-7">
-                                        ${!! number_format(\App\Models\Wallets::sum('total_withdrawn'),2) !!}
+                                        ${!! number_format($user->wallet->total_withdrawn,2) !!}
                                     </div>
                                     <div class="mt-1 text-slate-500">Total Withdrawn</div>
                                 </div>

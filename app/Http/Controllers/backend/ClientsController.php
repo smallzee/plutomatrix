@@ -29,6 +29,7 @@ class ClientsController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -51,6 +52,9 @@ class ClientsController extends Controller
     public function show($id)
     {
         //
+        $user = User::find($id);
+        $page_title = ucwords($user->name)." -  Dashboard";
+        return view('backend.client.show',compact('page_title','user'));
     }
 
     /**
