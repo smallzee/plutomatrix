@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PackageRequestForm;
+use App\Models\Packages;
 use Illuminate\Http\Request;
 
 class PackagesController extends Controller
@@ -37,9 +39,21 @@ class PackagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PackageRequestForm $request)
     {
         //
+        $request->validated();
+
+        Packages::create([
+            'name'=>$request->name,
+            'min_deposit'=>$request->min_deposit,
+            'max_deposit'=>$request->max_deposit,
+            'duration'=>$request->duration,
+            'interest'=>$request->interest,
+            'referral_percentage'=>$request->referral_percentage
+        ]);
+
+        return back()->with('alert_info','Package has been created successfully');
     }
 
     /**
