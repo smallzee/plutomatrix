@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Deposit;
 use Illuminate\Http\Request;
 
 class DepositController extends Controller
@@ -15,6 +16,9 @@ class DepositController extends Controller
     public function index()
     {
         //
+        $page_title = "All Deposits";
+        $deposits = Deposit::orderBy('id','desc')->paginate(10);
+        return view('backend.deposit.index',compact('page_title','deposits'));
     }
 
     /**
@@ -25,6 +29,7 @@ class DepositController extends Controller
     public function create()
     {
         //
+        abort(404);
     }
 
     /**
@@ -47,6 +52,9 @@ class DepositController extends Controller
     public function show($id)
     {
         //
+        $page_title = "Deposit Transaction Details";
+        $deposit = Deposit::find($id);
+        return view('backend.deposit.show',compact('page_title','deposit'));
     }
 
     /**
