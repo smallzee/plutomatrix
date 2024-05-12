@@ -1,11 +1,14 @@
 @extends('layouts.guest.app')
 
 @push('content')
-    <form action="{{route('deposits.store')}}" method="post">
+
+    <form action="{{route('deposits.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="mt-5">
+
             <div class="tf-container">
                 <div class=" accent-box-v2 bg-menuDark">
+
                     <div class="d-flex mt-3 justify-content-between align-items-center">
                         <span>Payment Method:</span>
                     </div>
@@ -34,11 +37,19 @@
                         <span>Deposit Amount:</span>
                     </div>
                     <div class="mt-12 box-input-field">
-                        <input type="text" required placeholder="Deposit Amount" name="amount" class="clear-ip value_input ip-style2">
+                        <input type="text" value="50" required placeholder="Deposit Amount" name="amount" class="clear-ip value_input ip-style2">
                         <i class="icon-close"></i>
                     </div>
+
                     <x-input-error :messages="$errors->get('amount')" class="mt-2" />
 
+                    <div class="d-flex justify-content-between mt-3 align-items-center">
+                        <span>Payment Evidence Receipt:</span>
+                    </div>
+                    <div class="mt-12">
+                        <input type="file" required class="form-control" name="file">
+                    </div>
+                    <x-input-error :messages="$errors->get('file')" class="mt-2" />
                 </div>
 
                 <h5 class="mt-20">Amount Money</h5>

@@ -4,7 +4,11 @@ namespace App\Http\Controllers\guest;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DepositRequestForm;
+use App\Mail\DepositTransactions;
+use App\Models\Deposit;
+use App\Models\PaymentMethod;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class DepositController extends Controller
 {
@@ -40,6 +44,25 @@ class DepositController extends Controller
     {
         //
         $request->validated();
+
+        $file = $request->file('file');
+        $image = time().$file->getClientOriginalName();
+        $file->move(public_path('assets/images'),$image);
+        $reference = uniqid();
+
+        $payment_method = PaymentMethod::find($request->payment_method);
+        Deposit::create([
+            'user_id'=>auth()->id(),
+            'payment_method_id'=>$payment_method->id,
+            'amount'=>$request->amount,
+            'image'=>$image,
+            'wallet_address'=>$payment_method->wallet_address,
+            'reference'=>$reference,
+        ]);
+
+        Mail::to(get_settings('official_email'))->send(new DepositTransactions("Admin",$payment_method->name,$request->amount,"processing",$reference));
+
+        return back()->with('alert_info','Your payment has been sent for processing');
     }
 
     /**

@@ -16,24 +16,22 @@
 
     <script type="text/javascript" src="{{asset('assets/guest/js/jquery.min.js')}}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/4.0.0-alpha.15/lib.js"></script>
 </head>
 <body>
 
 @include('flash')
 
+
 <div class="header-style2 fixed-top bg-menuDark">
     <div class="d-flex justify-content-between align-items-center">
-
         <a class="box-account" href="{{route('dashboard.index')}}">
             <img src="{{static_asset('avt/avt2.jpg.png')}}" alt="img" class="avt">
             <div class="info">
                 <p class="text-xsmall text-secondary">Welcome back!</p>
-                <h6>{{ ucwords(auth()->user()->name) }}</h6>
+                <h6>{{ ucwords(auth()->user()->name) }} - {{ $page_title }}</h6>
             </div>
         </a>
     </div>
-
 </div>
 
 <div class="pt-68 pb-80">
