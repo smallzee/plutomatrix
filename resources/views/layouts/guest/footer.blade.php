@@ -7,7 +7,7 @@
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="{{route('deposits.index')}}">
                 <i class="icon icon-wallet"></i>
                 All Deposit
             </a>
@@ -15,7 +15,7 @@
         <li>
             <a href="">
                 <i class="icon icon-earn"></i>
-                Invest
+                 Investment
             </a>
         </li>
         <li>

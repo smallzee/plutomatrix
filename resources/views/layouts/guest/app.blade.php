@@ -21,7 +21,6 @@
 
 @include('flash')
 
-
 <div class="header-style2 fixed-top bg-menuDark">
     <div class="d-flex justify-content-between align-items-center">
         <a class="box-account" href="{{route('dashboard.index')}}">
@@ -43,11 +42,11 @@
                 <li>
                     <a href="" class="tf-list-item d-flex flex-column gap-8 align-items-center">
                         <span class="box-round bg-surface d-flex justify-content-center align-items-center"><i class="icon icon-way"></i></span>
-                        Transactions
+                        Invest
                     </a>
                 </li>
                 <li>
-                    <a href="" class="tf-list-item d-flex flex-column gap-8 align-items-center">
+                    <a href="{{route('withdraw.index')}}" class="tf-list-item d-flex flex-column gap-8 align-items-center">
                         <span class="box-round bg-surface d-flex justify-content-center align-items-center"><i class="icon icon-way2"></i></span>
                         Withdraw
                     </a>
@@ -83,7 +82,7 @@
                                 <div id="line-chart-1"></div>
                             </div>
                             <div class="coin-price d-flex justify-content-between">
-                                <h5>${{ number_format(auth()->user()->wallet->depsoit,2) }}</h5>
+                                <h5>${{ number_format(auth()->user()->wallet->deposit,2) }}</h5>
                             </div>
                             <div class="blur bg1">
                             </div>

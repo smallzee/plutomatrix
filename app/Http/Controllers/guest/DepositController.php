@@ -20,6 +20,9 @@ class DepositController extends Controller
     public function index()
     {
         //
+        $page_title = "All Deposits";
+        $deposits = Deposit::where('user_id',auth()->id())->orderBy('id','desc')->paginate(10);
+        return view('guest.deposit.index',compact('page_title','deposits'));
     }
 
     /**
@@ -74,6 +77,7 @@ class DepositController extends Controller
     public function show($id)
     {
         //
+        abort(404);
     }
 
     /**
@@ -85,6 +89,7 @@ class DepositController extends Controller
     public function edit($id)
     {
         //
+        abort(404);
     }
 
     /**
@@ -97,6 +102,7 @@ class DepositController extends Controller
     public function update(Request $request, $id)
     {
         //
+        abort(404);
     }
 
     /**
@@ -108,5 +114,6 @@ class DepositController extends Controller
     public function destroy($id)
     {
         //
+        abort(404);
     }
 }

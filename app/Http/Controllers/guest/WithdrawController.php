@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\guest;
 
 use App\Http\Controllers\Controller;
-use App\Mail\DepositTransactions;
-use App\Models\Deposit;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 
-class DepositController extends Controller
+class WithdrawController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +15,8 @@ class DepositController extends Controller
     public function index()
     {
         //
-        $page_title = "All Deposits";
-        $deposits = Deposit::orderBy('id','desc')->paginate(10);
-        return view('backend.deposit.index',compact('page_title','deposits'));
+        $page_title = "Withdrawal";
+        return view('guest.withdraw.index',compact('page_title'));
     }
 
     /**
@@ -31,7 +27,6 @@ class DepositController extends Controller
     public function create()
     {
         //
-        abort(404);
     }
 
     /**
@@ -43,7 +38,6 @@ class DepositController extends Controller
     public function store(Request $request)
     {
         //
-        abort(404);
     }
 
     /**
@@ -55,9 +49,6 @@ class DepositController extends Controller
     public function show($id)
     {
         //
-        $page_title = "Deposit Transaction Details";
-        $deposit = Deposit::find($id);
-        return view('backend.deposit.show',compact('page_title','deposit'));
     }
 
     /**
@@ -69,7 +60,6 @@ class DepositController extends Controller
     public function edit($id)
     {
         //
-        abort(404);
     }
 
     /**
@@ -82,19 +72,6 @@ class DepositController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $deposit = Deposit::find($id);
-
-        $status = $request->status;
-
-        if (in_array($status,array('completed'))){
-            $deposit->user->wallet->deposit+=$deposit->amount;
-            $deposit->user->wallet->save();
-        }
-
-        $deposit->status = $status;
-        $deposit->save();
-
-        Mail::to(get_settings('official_email'))->send(new DepositTransactions($deposit->user->name,$deposit->payment_method->name,$deposit->amount,$status,$deposit->reference,$deposit->user->email));
     }
 
     /**
@@ -106,6 +83,5 @@ class DepositController extends Controller
     public function destroy($id)
     {
         //
-        abort(404);
     }
 }

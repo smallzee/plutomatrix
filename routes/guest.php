@@ -4,6 +4,7 @@ Route::prefix('user')->group(function () {
     Route::middleware(['auth','verified'])->group(function (){
         Route::resource('/dashboard', \App\Http\Controllers\guest\DashboardController::class);
         Route::resource('/deposits', \App\Http\Controllers\guest\DepositController::class);
+        Route::resource('/withdraw', \App\Http\Controllers\guest\WithdrawController::class);
 
         Route::get('/logout', function () {
             auth()->logout();
