@@ -131,9 +131,6 @@
     @stack('content')
 </div>
 
-
-
-
 @include('layouts.guest.footer')
 
 <script type="text/javascript" src="{{asset('assets/guest/js/bootstrap.min.js')}}"></script>
