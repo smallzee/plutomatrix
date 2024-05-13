@@ -18,6 +18,13 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js"></script>
+    <script type="text/javascript" src="{{asset('assets/guest/js/tradingview.js')}}"></script>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+            async>
+        {
+            "colorTheme":"light"
+        }
+    </script>
 
 {{--    @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
 </head>
