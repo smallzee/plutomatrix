@@ -21,19 +21,33 @@
                                 </li>
 
                                 <li class="menu-item">
-                                    <a href="">Our Service</a>
+                                    <a href="#">Our Service</a>
                                 </li>
 
                                 <li class="menu-item">
-                                    <a href="">Packages</a>
+                                    <a href="#">Packages</a>
                                 </li>
+
+                               @if(!auth()->check())
+                                    <li class="menu-item">
+                                        <a href="{{route('register')}}">Register</a>
+                                    </li>
+                               @endif
                             </ul>
                         </nav>
-                        <div class="group-button">
-                            <a class="btn-action" href="{{route('login')}}">
-                                <span>LOGIN</span>
-                            </a>
-                        </div>
+                        @if(auth()->check())
+                            <div class="group-button">
+                                <a class="btn-action" href="{{url('user/dashboard')}}">
+                                    <span>Dashboard</span>
+                                </a>
+                            </div>
+                        @else
+                            <div class="group-button">
+                                <a class="btn-action" href="{{route('login')}}">
+                                    <span>LOGIN</span>
+                                </a>
+                            </div>
+                        @endif
                         <div class="mobile-button"><span></span></div>
                     </div>
                 </div>
