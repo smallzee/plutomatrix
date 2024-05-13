@@ -25,8 +25,8 @@ class TopupRequestForm extends FormRequest
     {
         return [
             //
-            'balance'=>['required','numeric'],
-            'deposit'=>['required','numeric']
+            'balance'=>['numeric'],
+            'deposit'=>['numeric']
         ];
     }
 }

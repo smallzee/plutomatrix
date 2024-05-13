@@ -93,6 +93,12 @@ class ClientsController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $user = User::find($id);
+        $user->status = $request->status;
+        $user->save();
+
+        return back()->with('alert_info','User account has been '.AccountStatus($request->status));
     }
 
     /**

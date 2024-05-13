@@ -27,7 +27,7 @@
                         <span>Your Wallet Address:</span>
                     </div>
                     <div class="mt-12 box-input-field mb-3">
-                        <input type="text" required name="wallet_address" id="wallet_address" placeholder="Wallet Address"  readonly class="clear-ip ip-style2">
+                        <input type="text" required name="wallet_address" id="wallet_address" placeholder="Wallet Address"  class="clear-ip ip-style2">
                         <i class="icon-close"></i>
                     </div>
                     <x-input-error :messages="$errors->get('wallet_address')" class="mt-2" />
