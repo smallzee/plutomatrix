@@ -33,8 +33,8 @@
     </div>
 
 
-    <div class="pt-20 pb-80">
-        <div class="tf-container">
+        <div class="pt-20 pb-80">
+            <div class="tf-container">
             <div class="row">
                 @foreach($packages as $value)
                     <div class="col-sm-6">

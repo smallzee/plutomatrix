@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\guest;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ChangePasswordRequestForm;
+use App\Http\Requests\ProfileRequestForm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -27,6 +30,7 @@ class ProfileController extends Controller
     public function create()
     {
         //
+        abort(404);
     }
 
     /**
@@ -35,9 +39,17 @@ class ProfileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProfileRequestForm $request)
     {
         //
+        $request->validated();
+
+        $user = auth()->user();
+        $user->phone = $request->phone;
+        $user->name = $request->name;
+        $user->save();
+
+        return back()->with('alert_info','Profile has been updated successfully');
     }
 
     /**
@@ -49,6 +61,7 @@ class ProfileController extends Controller
     public function show($id)
     {
         //
+        abort(404);
     }
 
     /**
@@ -60,6 +73,7 @@ class ProfileController extends Controller
     public function edit($id)
     {
         //
+        abort(404);
     }
 
     /**
@@ -69,9 +83,21 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ChangePasswordRequestForm $request, $id)
     {
         //
+        $request->validated();
+
+        $user = auth()->user();
+
+        if (!Hash::check($request->old_password,$user->password)){
+            return back()->with('alert_error','Invalid old password, please check and try again');
+        }
+
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return back()->with('alert_info','Your password has been changed successfully');
     }
 
     /**
