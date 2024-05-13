@@ -43,15 +43,15 @@
                                 <h4 class="mb-3 text-center">{{ ucwords($value->name) }}</h4>
                                 <table class="table table-bordered text-white">
                                     <tr>
-                                        <td>Minimum Deposit : </td>
+                                        <td>Minimum Amount : </td>
                                         <td>${{ number_format($value->min_deposit,2) }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Maximum Deposit : </td>
+                                        <td>Maximum Amount : </td>
                                         <td>${{ number_format($value->max_deposit,2) }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Return : </td>
+                                        <td>Percentage : </td>
                                         <td>{{ $value->interest }}%</td>
                                     </tr>
                                     <tr>
@@ -66,7 +66,7 @@
 
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <a href="{{route('investment.show',base64_encode($value->id))}}" class="tf-btn lg primary mb-3">Invest Now</a>
+                                        <a href="{{route('investment.edit',base64_encode($value->id))}}" class="tf-btn lg primary mb-3">Invest Now</a>
                                     </div>
                                     <div class="col-sm-6">
                                         <a href="#" data-bs-toggle="modal" data-bs-target="#accountWallet" data-interest="{{ $value->interest }}" data-title="{{ ucwords($value->name) }}" data-min-deposit="{{ $value->min_deposit }}" data-max-deposit="{{ $value->max_deposit }}" data-duration="{{ ExtractDays($value->duration) }}" class="tf-btn calculate lg primary">Calculate RIO</a>

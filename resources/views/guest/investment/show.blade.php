@@ -7,15 +7,15 @@
                 <h4 class="mb-3 text-center">{{ ucwords($package->name) }}</h4>
                 <table class="table table-bordered text-white">
                     <tr>
-                        <td>Minimum Deposit : </td>
+                        <td>Minimum Amount : </td>
                         <td>${{ number_format($package->min_deposit,2) }}</td>
                     </tr>
                     <tr>
-                        <td>Maximum Deposit : </td>
+                        <td>Maximum Amount : </td>
                         <td>${{ number_format($package->max_deposit,2) }}</td>
                     </tr>
                     <tr>
-                        <td>Return : </td>
+                        <td>Percentage : </td>
                         <td>{{ $package->interest }}%</td>
                     </tr>
                     <tr>
@@ -38,6 +38,7 @@
 
                 <div class="mt-12 mb-3">
                     <select id="investment_method" name="investment_method" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option value="">Choose from method</option>
                         @foreach(array(1,2) as $value)
                             <option value="{{ $value }}" >{{ InvestmentMethod($value) }}</option>
                         @endforeach

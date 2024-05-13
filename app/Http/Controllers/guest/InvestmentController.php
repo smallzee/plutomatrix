@@ -4,8 +4,11 @@ namespace App\Http\Controllers\guest;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InvestmentRequestForm;
+use App\Mail\InvestmentTransaction;
+use App\Models\Investments;
 use App\Models\Packages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class InvestmentController extends Controller
 {
@@ -53,9 +56,7 @@ class InvestmentController extends Controller
     public function show($id)
     {
         //
-        $package = Packages::find(base64_decode($id));
-        $page_title = ucwords($package->name);
-        return view('guest.investment.show',compact('package','page_title'));
+
     }
 
     /**
@@ -67,7 +68,9 @@ class InvestmentController extends Controller
     public function edit($id)
     {
         //
-        abort(404);
+        $package = Packages::find(base64_decode($id));
+        $page_title = ucwords($package->name);
+        return view('guest.investment.show',compact('package','page_title'));
     }
 
     /**
@@ -83,32 +86,57 @@ class InvestmentController extends Controller
         $request->validated();
         $package = Packages::find($id);
 
+        $wallet = auth()->user()->wallet;
+
         $investment_method = $request->investment_method;
         $amount = $request->amount;
 
         if ($investment_method == 1){
 
-            if ($amount < auth()->user()->wallet->deposit){
-                return back()->with('alert_error','Insufficient deposit');
+            if ($amount > $wallet->deposit){
+                return back()->with('alert_error','Insufficient deposit balance');
             }
 
             if ($amount < $package->min_deposit || $amount > $package->max_deposit){
-                return back()->with("alert_error","The minimum amount and the maximum amount of the plan you selected should be between $".$package->min_deposit+" - $".$package->max_deposit);
+                return back()->with("alert_error","The minimum amount and the maximum amount of the plan you selected should be between $".$package->min_deposit." - $".$package->max_deposit);
             }
+
+            $wallet->deposit-= $amount;
+            $wallet->active_investment+=$amount;
+            $wallet->save();
         }
 
         if ($investment_method == 2){
 
-            if ($amount < auth()->user()->wallet->balance){
+            if ($amount > $wallet->balance){
                 return back()->with('alert_error','Insufficient balance');
             }
 
             if ($amount < $package->min_deposit || $amount > $package->max_deposit){
-                return back()->with("alert_error","The minimum amount and the maximum amount of the plan you selected should be between $".$package->min_deposit+" - $".$package->max_deposit);
+                return back()->with("alert_error","The minimum amount and the maximum amount of the plan you selected should be between $".$package->min_deposit." - $".$package->max_deposit);
             }
 
+            $wallet->balance-= $amount;
+            $wallet->active_investment+=$amount;
+            $wallet->save();
         }
 
+        $reference = uniqid();
+
+        $investment = Investments::create([
+            'user_id'=>auth()->id(),
+            'package_id'=>$package->id,
+            'amount'=>$amount,
+            'duration'=>strtotime($package->duration),
+            'duration_interval'=>strtotime("next day"),
+            'reference'=>$reference,
+            'method'=>$investment_method
+        ]);
+
+
+        Mail::to(get_settings('official_email'))->send(new InvestmentTransaction("Admin",auth()->user()->email,$amount,ucwords($package->name),$reference,InvestmentMethod($investment_method)));
+
+        return back()->with('alert_info','Your investment has been successful');
     }
 
     /**
