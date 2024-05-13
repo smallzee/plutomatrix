@@ -7,28 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $page_title }} -  {{ config('app.name') }}</title>
     <link rel="stylesheet" href="{{asset('assets/frontend/app/dist/app.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/frontend/app/dist/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/frontend/app/dist/aos.css')}}">
     <link rel="shortcut icon" href="{{static_asset('logo.png')}}" type="image/x-icon">
+    <script src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js"></script>
 </head>
 <body class="home-main header-fixed" data-magic-cursor="show" >
-
-<!-- Preloading -->
-<div class="preloader">
-    <div class=" loader">
-        <div class="square"></div>
-        <div class="path">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <p class="text-load">Loading :</p>
-    </div>
-</div>
-<!-- End Preloading -->
-
 <!-- MAGIC CURSOR -->
 <div class="mouse-cursor cursor-outer"></div>
 <div class="mouse-cursor cursor-inner"></div>
