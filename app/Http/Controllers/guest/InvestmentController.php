@@ -20,6 +20,9 @@ class InvestmentController extends Controller
     public function index()
     {
         //
+        $page_title = "All Investment";
+        $investments = Investments::where('user_id',auth()->id())->orderBy('id','desc')->paginate(10);
+        return view('guest.investment.index',compact('page_title','investments'));
     }
 
     /**
@@ -56,7 +59,9 @@ class InvestmentController extends Controller
     public function show($id)
     {
         //
-
+        $page_title = "Investment Details";
+        $investment = Investments::find(base64_decode($id));
+        return view('guest.investment.show',compact('page_title','investment'));
     }
 
     /**
@@ -70,7 +75,7 @@ class InvestmentController extends Controller
         //
         $package = Packages::find(base64_decode($id));
         $page_title = ucwords($package->name);
-        return view('guest.investment.show',compact('package','page_title'));
+        return view('guest.investment.edit',compact('package','page_title'));
     }
 
     /**

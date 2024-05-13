@@ -9,4 +9,9 @@ class Investments extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    function package()
+    {
+        return $this->hasOne(Packages::class,'id','package_id');
+    }
 }
