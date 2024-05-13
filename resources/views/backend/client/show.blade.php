@@ -150,7 +150,51 @@
 
             <div data-transition data-selector=".active" data-enter="transition-[visibility,opacity] ease-linear duration-150" data-enter-from="!p-0 !h-0 overflow-hidden invisible opacity-0" data-enter-to="visible opacity-100" data-leave="transition-[visibility,opacity] ease-linear duration-150" data-leave-from="visible opacity-100" data-leave-to="!p-0 !h-0 overflow-hidden invisible opacity-0" id="example-2" role="tabpanel" aria-labelledby="example-2-tab" class="tab-pane p-5 leading-relaxed">
 
-                ;;
+                <div class="overflow-x-auto">
+                    <table data-tw-merge class="w-full text-left">
+                        <thead data-tw-merge class="">
+                        <tr data-tw-merge class="">
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">SN</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Amount</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Payment Method</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Reference</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Status</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Date</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Action</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">SN</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Amount</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Payment Method</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Reference</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Status</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Date</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Action</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        @php($sn =1)
+                        @foreach($deposits as $value)
+                            <tr data-tw-merge class="">
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">{{ $sn++ }}</td>
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">${{ number_format($value->amount,2) }}</td>
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">{{ $value->payment_method->name }}</td>
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">{{ $value->reference }}</td>
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">{{ ucwords($value->status) }}</td>
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">{{ $value->updated_at }}</td>
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">
+                                    <a href="{{route('deposit.show',$value->id)}}" class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary">View</a>
+
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+
+                    {{ $deposits->links() }}
+                </div>
 
             </div>
 
@@ -168,7 +212,44 @@
 
             <div data-transition data-selector=".active" data-enter="transition-[visibility,opacity] ease-linear duration-150" data-enter-from="!p-0 !h-0 overflow-hidden invisible opacity-0" data-enter-to="visible opacity-100" data-leave="transition-[visibility,opacity] ease-linear duration-150" data-leave-from="visible opacity-100" data-leave-to="!p-0 !h-0 overflow-hidden invisible opacity-0" id="example-5" role="tabpanel" aria-labelledby="example-5-tab" class="tab-pane p-5 leading-relaxed">
 
-                00
+                <div class="overflow-x-auto ">
+                    <table class="table-auto border-separate border w-full">
+                        <tr>
+                            <td class="border w-1/4 p-3 font-bold">Email Address</td>
+                            <td class="border w-1/4 p-3">{{ $user->email }}</td>
+                        </tr>
+                        <tr>
+                            <td class="border w-1/4 p-3 font-bold">Full Name</td>
+                            <td class="border w-1/4 p-3">{{ $user->name }}</td>
+                        </tr>
+                        <tr>
+                            <td class="border w-1/4 p-3 font-bold">Phone Number</td>
+                            <td class="border w-1/4 p-3">{{ $user->phone }}</td>
+                        </tr>
+                        <tr>
+                            <td class="border w-1/4 p-3 font-bold">Status</td>
+                            <td class="border w-1/4 p-3">{{ AccountStatus($user->status) }}</td>
+                        </tr>
+
+                    </table>
+
+                    <form action="" method="post">
+                        @csrf
+                        @method('PATCH')
+                        <div class="mt-12 mb-3">
+                            <select id="status" name="status" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option selected>Select</option>
+                                @foreach(array('processing','completed','cancelled','failed') as $value)
+                                    <option value="{{ $value }}">{{ ucwords($value) }}</option>
+                                @endforeach
+                            </select>
+
+                            <x-input-error :messages="$errors->get('status')" class="mt-2" />
+                        </div>
+
+                        <button data-tw-merge class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary mt-3">Submit</button>
+                    </form>
+                </div>
 
             </div>
         </div>

@@ -26,3 +26,10 @@ if(!function_exists('InvestmentMethod')){
         return ($status == 1) ? 'Invest from deposit' : 'Invest from balance';
     }
 }
+
+if (!function_exists('AccountStatus')){
+    function AccountStatus($status)
+    {
+        return ($status == 1) ? 'Active' : 'In-active';
+    }
+}

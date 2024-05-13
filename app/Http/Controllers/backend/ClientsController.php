@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Deposit;
 use App\Models\Investments;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -57,7 +58,8 @@ class ClientsController extends Controller
         $user = User::find($id);
         $page_title = ucwords($user->name)." -  Dashboard";
         $investments = Investments::where('user_id',$user->id)->orderBy('id','desc')->paginate(10);
-        return view('backend.client.show',compact('page_title','user','investments'));
+        $deposits = Deposit::where('user_id',$user->id)->orderBy('id','desc')->paginate(10);
+        return view('backend.client.show',compact('page_title','user','investments','deposits'));
     }
 
     /**
