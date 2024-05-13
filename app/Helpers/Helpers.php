@@ -12,3 +12,10 @@ if (!function_exists('get_settings')) {
         return @$setting_data->settings_value;
     }
 }
+
+if (!function_exists('ExtractDays')){
+    function ExtractDays($value)
+    {
+        return preg_replace("/(days|day)\s*/", "", $value);
+    }
+}

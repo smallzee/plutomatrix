@@ -49,7 +49,7 @@ class PackagesController extends Controller
             'name'=>$request->name,
             'min_deposit'=>$request->min_deposit,
             'max_deposit'=>$request->max_deposit,
-            'duration'=>$request->duration,
+            'duration'=>strtolower($request->duration),
             'interest'=>$request->interest,
             'referral_percentage'=>$request->referral_percentage
         ]);
@@ -100,7 +100,7 @@ class PackagesController extends Controller
             'name'=>$request->name,
             'min_deposit'=>$request->min_deposit,
             'max_deposit'=>$request->max_deposit,
-            'duration'=>$request->duration,
+            'duration'=>strtolower($request->duration),
             'interest'=>$request->interest,
             'referral_percentage'=>$request->referral_percentage
         ]);
