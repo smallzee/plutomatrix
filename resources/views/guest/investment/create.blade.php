@@ -66,7 +66,7 @@
 
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <a href="" class="tf-btn lg primary mb-3">Invest Now</a>
+                                        <a href="{{route('investment.show',base64_encode($value->id))}}" class="tf-btn lg primary mb-3">Invest Now</a>
                                     </div>
                                     <div class="col-sm-6">
                                         <a href="#" data-bs-toggle="modal" data-bs-target="#accountWallet" data-interest="{{ $value->interest }}" data-title="{{ ucwords($value->name) }}" data-min-deposit="{{ $value->min_deposit }}" data-max-deposit="{{ $value->max_deposit }}" data-duration="{{ ExtractDays($value->duration) }}" class="tf-btn calculate lg primary">Calculate RIO</a>

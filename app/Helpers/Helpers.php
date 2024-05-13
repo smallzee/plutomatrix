@@ -19,3 +19,10 @@ if (!function_exists('ExtractDays')){
         return preg_replace("/(days|day)\s*/", "", $value);
     }
 }
+
+if(!function_exists('InvestmentMethod')){
+    function InvestmentMethod($status)
+    {
+        return ($status == 1) ? 'Invest from deposit' : 'Invest from balance';
+    }
+}
