@@ -75,45 +75,108 @@
         <ul data-tw-merge role="tablist" class="border-b border-slate-200 dark:border-darkmode-400 w-full flex">
             <li id="example-1-tab" data-tw-merge role="presentation" class="focus-visible:outline-none flex-1 -mb-px">
                 <button data-tw-merge data-tw-target="#example-1" role="tab" class="cursor-pointer block appearance-none px-3 py-2 border border-transparent text-slate-600 transition-colors dark:text-slate-400 [&amp;.active]:text-slate-700 [&amp;.active]:dark:text-white block border-transparent rounded-t-md dark:border-transparent [&amp;.active]:bg-white [&amp;.active]:border-slate-200 [&amp;.active]:border-b-transparent [&amp;.active]:font-medium [&amp;.active]:dark:bg-transparent [&amp;.active]:dark:border-t-darkmode-400 [&amp;.active]:dark:border-b-darkmode-600 [&amp;.active]:dark:border-x-darkmode-400 [&amp;:not(.active)]:hover:bg-slate-100 [&amp;:not(.active)]:dark:hover:bg-darkmode-400 [&amp;:not(.active)]:dark:hover:border-transparent active w-full py-2"
-                >Example Tab 1</button>
+                >Investment</button>
             </li>
             <li id="example-2-tab" data-tw-merge role="presentation" class="focus-visible:outline-none flex-1 -mb-px">
                 <button data-tw-merge data-tw-target="#example-2" role="tab" class="cursor-pointer block appearance-none px-3 py-2 border border-transparent text-slate-600 transition-colors dark:text-slate-400 [&amp;.active]:text-slate-700 [&amp;.active]:dark:text-white block border-transparent rounded-t-md dark:border-transparent [&amp;.active]:bg-white [&amp;.active]:border-slate-200 [&amp;.active]:border-b-transparent [&amp;.active]:font-medium [&amp;.active]:dark:bg-transparent [&amp;.active]:dark:border-t-darkmode-400 [&amp;.active]:dark:border-b-darkmode-600 [&amp;.active]:dark:border-x-darkmode-400 [&amp;:not(.active)]:hover:bg-slate-100 [&amp;:not(.active)]:dark:hover:bg-darkmode-400 [&amp;:not(.active)]:dark:hover:border-transparent w-full py-2"
-                >Example Tab 2</button>
+                >Recent Clients Registered</button>
             </li>
         </ul>
         <div
             class="tab-content border-b border-l border-r">
             <div data-transition data-selector=".active" data-enter="transition-[visibility,opacity] ease-linear duration-150" data-enter-from="!p-0 !h-0 overflow-hidden invisible opacity-0" data-enter-to="visible opacity-100" data-leave="transition-[visibility,opacity] ease-linear duration-150"  data-leave-from="visible opacity-100"  data-leave-to="!p-0 !h-0 overflow-hidden invisible opacity-0" id="example-1" role="tabpanel" aria-labelledby="example-1-tab" class="tab-pane active p-5 leading-relaxed">
 
-                Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap
-                into electronic typesetting, remaining essentially
-                unchanged. It was popularised in the 1960s with the
-                release of Letraset sheets containing Lorem Ipsum
-                passages, and more recently with desktop publishing
-                software like Aldus PageMaker including versions of
-                Lorem Ipsum.
+                <div class="overflow-x-auto">
+                    <table data-tw-merge class="w-full text-left">
+                        <thead data-tw-merge class="">
+                        <tr data-tw-merge class="">
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">SN</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Client</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Amount</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Package</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Reference</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Status</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Date</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Action</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">SN</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Client</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Amount</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Package</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Reference</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Status</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Date</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Action</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        @php($sn =1)
+                        @foreach($investments as $value)
+                            <tr data-tw-merge class="">
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">{{ $sn++ }}</td>
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">{{ ucwords($value->user->name) }} - {{ $value->user->email }}</td>
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">${{ number_format($value->amount,2) }}</td>
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">{{ $value->package->name }}</td>
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">{{ $value->reference }}</td>
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">{{ ucwords($value->status) }}</td>
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">{{ $value->updated_at }}</td>
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">
+                                    <a href="{{route('investments.show',$value->id)}}" class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary">View</a>
+
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
 
             <div data-transition data-selector=".active" data-enter="transition-[visibility,opacity] ease-linear duration-150" data-enter-from="!p-0 !h-0 overflow-hidden invisible opacity-0" data-enter-to="visible opacity-100" data-leave="transition-[visibility,opacity] ease-linear duration-150" data-leave-from="visible opacity-100" data-leave-to="!p-0 !h-0 overflow-hidden invisible opacity-0" id="example-2" role="tabpanel" aria-labelledby="example-2-tab" class="tab-pane p-5 leading-relaxed">
 
-                It is a long established fact that a reader will be
-                distracted by the readable content of a page when
-                looking at its layout. The point of using Lorem Ipsum
-                is that it has a more-or-less normal distribution of
-                letters, as opposed to using 'Content here, content
-                here', making it look like readable English. Many
-                desktop publishing packages and web page editors now
-                use Lorem Ipsum as their default model text, and a
-                search for 'lorem ipsum' will uncover many web sites
-                still in their infancy. Various versions have evolved
-                over the years, sometimes by accident, sometimes on
-                purpose (injected humour and the like).
+                <div class="overflow-x-auto">
+                    <table data-tw-merge class="w-full text-left">
+                        <thead data-tw-merge class="">
+                        <tr data-tw-merge class="">
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">SN</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Name</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Email Address</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Phone Number</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Account Type</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Action</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">SN</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Name</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Email Address</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Phone Number</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Account Type</th>
+                            <th data-tw-merge class="font-medium px-5 py-3 border-b-2 dark:border-darkmode-300 whitespace-nowrap">Action</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        @php($sn =1)
+                        @foreach($users as $value)
+                            <tr data-tw-merge class="">
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">{{ $sn++ }}</td>
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">{{ ucwords($value->name) }}</td>
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">{{ $value->email }}</td>
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">{{ $value->phone }}</td>
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">{{ $value->role_type }}</td>
+                                <td data-tw-merge class="px-5 py-3 border-b dark:border-darkmode-300">
+                                    <a href="{{route('clients.show',$value->id)}}" class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary">Profile</a>
+
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
         </div>

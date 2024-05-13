@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Investments;
-use App\Models\User;
-use App\Providers\RouteServiceProvider;
+use App\Mail\WithrawalTransaction;
+use App\Models\Deposit;
+use App\Models\Withdrawal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
-class DashboardController extends Controller
+class WithdrawalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +19,9 @@ class DashboardController extends Controller
     public function index()
     {
         //
-        $page_title = "Dashboard";
-        $investments = Investments::orderBy('id','desc')->limit(10)->get();
-        $users = User::where('role_type','client')->limit(10)->get();
-        return view('backend.dashboard',compact('page_title','investments','users'));
+        $page_title = "All Withdrawal";
+        $withdrawal = Withdrawal::orderBy('id','desc')->paginate(10);
+        return view('backend.withdrawal.index',compact('page_title','withdrawal'));
     }
 
     /**
@@ -32,6 +32,7 @@ class DashboardController extends Controller
     public function create()
     {
         //
+        abort(404);
     }
 
     /**
@@ -43,6 +44,7 @@ class DashboardController extends Controller
     public function store(Request $request)
     {
         //
+        abort(404);
     }
 
     /**
@@ -54,6 +56,9 @@ class DashboardController extends Controller
     public function show($id)
     {
         //
+        $page_title = "Withdrawal Transaction Details";
+        $withdrawal = Withdrawal::find($id);
+        return view('backend.withdrawal.show',compact('page_title','withdrawal'));
     }
 
     /**
@@ -77,6 +82,19 @@ class DashboardController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $withdrawal = Withdrawal::find($id);
+
+        $status = $request->status;
+
+        if (in_array($status,array('cancelled','failed'))){
+            $withdrawal->user->wallet->total_withdrawn-=$withdrawal->amount;
+            $withdrawal->user->wallet->save();
+        }
+
+        $withdrawal->status = $status;
+        $withdrawal->save();
+
+        Mail::to(get_settings('official_email'))->send(new WithrawalTransaction($withdrawal->user->name,$withdrawal->payment_method->name,$withdrawal->amount,$status,$withdrawal->reference,$withdrawal->user->email));
     }
 
     /**

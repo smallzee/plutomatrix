@@ -5,45 +5,42 @@
         <table class="table-auto border-separate border w-full">
             <tr>
                 <td class="border w-1/4 p-3 font-bold">Id</td>
-                <td class="border w-1/4 p-3">{{ $deposit->id }}</td>
+                <td class="border w-1/4 p-3">{{ $withdrawal->id }}</td>
             </tr>
             <tr>
                 <td class="border w-1/4 p-3 font-bold">Amount</td>
-                <td class="border w-1/4 p-3">${{ number_format($deposit->amount,2) }}</td>
+                <td class="border w-1/4 p-3">${{ number_format($withdrawal->amount,2) }}</td>
             </tr>
             <tr>
-                <td class="border w-1/4 p-3 font-bold">Payment Method</td>
-                <td class="border w-1/4 p-3">{{ $deposit->payment_method->name }}</td>
+                <td class="border w-1/4 p-3 font-bold">Withdrawal Payment Method</td>
+                <td class="border w-1/4 p-3">{{ $withdrawal->payment_method->name }}</td>
             </tr>
             <tr>
                 <td class="border w-1/4 p-3 font-bold">Wallet Send To</td>
-                <td class="border w-1/4 p-3">{{ $deposit->wallet_address }}</td>
+                <td class="border w-1/4 p-3">{{ $withdrawal->withdrawal_details }}</td>
             </tr>
             <tr>
                 <td class="border w-1/4 p-3 font-bold">Client Details</td>
-                <td class="border w-1/4 p-3">{{ $deposit->user->name }} - {{ $deposit->user->email }}</td>
+                <td class="border w-1/4 p-3">{{ $withdrawal->user->name }} - {{ $withdrawal->user->email }}</td>
             </tr>
             <tr>
                 <td class="border w-1/4 p-3 font-bold">Reference</td>
-                <td class="border w-1/4 p-3">{{ $deposit->reference  }}</td>
+                <td class="border w-1/4 p-3">{{ $withdrawal->reference  }}</td>
             </tr>
             <tr>
                 <td class="border w-1/4 p-3 font-bold">Status</td>
-                <td class="border w-1/4 p-3">{{ ucwords($deposit->status) }}</td>
+                <td class="border w-1/4 p-3">{{ ucwords($withdrawal->status) }}</td>
             </tr>
-            <tr>
-                <td class="border w-1/4 p-3 font-bold">Evidence Of Payment</td>
-                <td class="border w-1/4 p-3"><img src="{{ static_asset($deposit->image) }}"></td>
-            </tr>
+
             <tr>
                 <td class="border w-1/4 p-3 font-bold">Date</td>
-                <td class="border w-1/4 p-3">{{ $deposit->updated_at }}</td>
+                <td class="border w-1/4 p-3">{{ $withdrawal->updated_at }}</td>
             </tr>
         </table>
 
-        @if(in_array($deposit->status,array('processing')))
+        @if(in_array($withdrawal->status,array('processing')))
             <h1 class="font-bold mt-5 text-2xl">Payment Status</h1>
-            <form action="{{route('deposit.update',$deposit->id)}}" method="post">
+            <form action="{{route('withdrawals.update',$withdrawal->id)}}" method="post">
                 @csrf
                 @method('PATCH')
                 <div class="mt-12 mb-3">

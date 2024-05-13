@@ -24,6 +24,11 @@
             <div class="side-menu__link__title">All Deposits</div>
         </a>
 
+        <a href="{{route('withdrawals.index')}}" class="side-menu__link ">
+            <i data-tw-merge="" data-lucide="cloud" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+            <div class="side-menu__link__title">All Withdrawal</div>
+        </a>
+
         <a href="{{route('investments.index')}}" class="side-menu__link ">
             <i data-tw-merge="" data-lucide="cloud" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
             <div class="side-menu__link__title">All Investments</div>
@@ -52,6 +57,11 @@
         <a href="{{route('settings.index')}}" class="side-menu__link ">
             <i data-tw-merge="" data-lucide="settings" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
             <div class="side-menu__link__title">Settings</div>
+        </a>
+
+        <a href="{{url('panel/logout')}}" class="side-menu__link ">
+            <i data-tw-merge="" data-lucide="user" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+            <div class="side-menu__link__title">Logout</div>
         </a>
     </li>
 </ul>
