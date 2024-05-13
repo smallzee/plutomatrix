@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Investments;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,7 @@ class ClientsController extends Controller
     public function create()
     {
         //
-
+        abort(404);
     }
 
     /**
@@ -41,6 +42,7 @@ class ClientsController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**
@@ -54,7 +56,8 @@ class ClientsController extends Controller
         //
         $user = User::find($id);
         $page_title = ucwords($user->name)." -  Dashboard";
-        return view('backend.client.show',compact('page_title','user'));
+        $investments = Investments::where('user_id',$user->id)->orderBy('id','desc')->paginate(10);
+        return view('backend.client.show',compact('page_title','user','investments'));
     }
 
     /**
@@ -66,6 +69,7 @@ class ClientsController extends Controller
     public function edit($id)
     {
         //
+        abort(404);
     }
 
     /**
