@@ -40,7 +40,7 @@
 <div class="pt-68 pb-80">
     <div class="bg-menuDark tf-container">
 
-            <coingecko-coin-price-marquee-widget  coin-ids="bitcoin,ethereum,eos,dogecoin,ripple,litecoin,tron" currency="usd" background-color="#fff" locale="en"></coingecko-coin-price-marquee-widget>
+        <coingecko-coin-price-marquee-widget  coin-ids="bitcoin,ethereum,eos,dogecoin,ripple,litecoin,tron" currency="usd" background-color="#fff" locale="en"></coingecko-coin-price-marquee-widget>
         <div class="pt-12 pb-12 ">
             <h5><span>Balance</span></h5>
             <h1 class="mt-16"><a href="#">${{ number_format(auth()->user()->wallet->balance,2) }}</a></h1>
