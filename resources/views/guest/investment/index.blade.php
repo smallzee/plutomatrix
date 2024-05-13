@@ -8,7 +8,7 @@
                 <!-- </div> -->
             </div>
             <div class="tab-content mt-8">
-                <div class="tab-pane fade show active" id="favorites" role="tabpanel">
+                <div class="tab-pane fade show active " id="favorites" role="tabpanel">
                     <div class="d-flex justify-content-between">
                         Name
                         <p class="d-flex gap-8">
@@ -22,7 +22,7 @@
                         @foreach($investments as $value)
                             <li>
                                 <a href="{{route('investment.show',base64_encode($value->id))}}" class="coin-item style-2 gap-12">
-                                    <div class="content">
+                                    <div class="content mb-3">
                                         <div class="title">
                                             <p class="mb-4 text-button">{{ ucwords($value->package->name) }}</p>
                                             <span class="text-secondary">{{ date('d-m-Y H:i:s:a',strtotime($value->updated_at)) }}</span>

@@ -25,7 +25,7 @@ class WithdrawalRequestForm extends FormRequest
     {
         return [
             //
-            'payment_method'=>['required','gt:0'],
+            'payment_method'=>['required'],
             'amount'=>['required','gt:0','numeric'],
             'wallet_address'=>['required']
         ];

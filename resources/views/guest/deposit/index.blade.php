@@ -2,7 +2,7 @@
 
 @push('content')
     <div class="bg-menuDark tf-container">
-        <div class="pt-12 pb-12 mt-4">
+        <div class="pt-12 pb-12 mt-4 mb-3">
             <div class="wrap-filter-swiper">
                 <h5><a href="#" class="cryptex-rating">{{ $page_title }}</a></h5>
                 <!-- </div> -->

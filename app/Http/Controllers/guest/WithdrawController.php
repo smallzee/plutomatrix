@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\guest;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\WithdrawalRequestForm;
+use App\Mail\WithrawalTransaction;
+use App\Models\PaymentMethod;
+use App\Models\Withdrawal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class WithdrawController extends Controller
 {
@@ -16,7 +21,8 @@ class WithdrawController extends Controller
     {
         //
         $page_title = "Withdrawal";
-        return view('guest.withdraw.index',compact('page_title'));
+        $withdrawal = Withdrawal::where('user_id',auth()->id())->orderBy('id','desc')->paginate(10);
+        return view('guest.withdraw.index',compact('page_title','withdrawal'));
     }
 
     /**
@@ -27,6 +33,7 @@ class WithdrawController extends Controller
     public function create()
     {
         //
+        abort(404);
     }
 
     /**
@@ -35,9 +42,42 @@ class WithdrawController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(WithdrawalRequestForm $request)
     {
         //
+        $request->validated();
+
+        $amount = $request->amount;
+        $wallet_address = $request->wallet_address;
+        $payment_method_id = $request->payment_method;
+
+        $payment_method = PaymentMethod::find($payment_method_id);
+
+        $user = auth()->user();
+        $wallet = $user->wallet;
+
+        if ($wallet->balance < $amount){
+            return back()->with('alert_error','Insufficient balance, please check and try again');
+        }
+
+        $reference = uniqid();
+
+        Withdrawal::create([
+            'user_id'=>$user->id,
+            'payment_method_id'=>$payment_method->id,
+            'reference'=>$reference,
+            'amount'=>$amount,
+            'withdrawal_details'=>$wallet_address
+        ]);
+
+        $wallet->balance-=$amount;
+        $wallet->total_withdrawn+=$amount;
+        $wallet->save();
+
+        Mail::to(get_settings('official_email'))->send(new WithrawalTransaction("Admin",$payment_method->name,$request->amount,"processing",$reference,$user->email));
+
+        return back()->with('alert_info','Your payment has been sent for processing');
+
     }
 
     /**
@@ -60,6 +100,7 @@ class WithdrawController extends Controller
     public function edit($id)
     {
         //
+        abort(404);
     }
 
     /**
@@ -72,6 +113,7 @@ class WithdrawController extends Controller
     public function update(Request $request, $id)
     {
         //
+        abort(404);
     }
 
     /**
@@ -83,5 +125,6 @@ class WithdrawController extends Controller
     public function destroy($id)
     {
         //
+        abort(404);
     }
 }
