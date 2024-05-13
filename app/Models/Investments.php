@@ -14,4 +14,9 @@ class Investments extends Model
     {
         return $this->hasOne(Packages::class,'id','package_id');
     }
+
+    function user()
+    {
+        return $this->hasOne(User::class,'id','user_id');
+    }
 }

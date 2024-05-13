@@ -9,6 +9,7 @@ Route::prefix('panel')->group(function () {
         Route::resource('/packages', \App\Http\Controllers\backend\PackagesController::class);
         Route::resource('/payment-method', \App\Http\Controllers\backend\PaymentMethodController::class);
         Route::resource('/custom-message', \App\Http\Controllers\backend\CustomMessageController::class);
+        Route::resource('/investments', \App\Http\Controllers\backend\InvestmentsController::class);
         Route::resource('/deposit', \App\Http\Controllers\backend\DepositController::class);
         Route::resource('/settings', \App\Http\Controllers\backend\SettingsController::class);
         Route::get('/logout', function () {
