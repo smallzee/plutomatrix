@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TopupRequestForm;
 use App\Models\Deposit;
 use App\Models\Investments;
 use App\Models\User;
@@ -40,10 +41,18 @@ class ClientsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TopupRequestForm $request)
     {
         //
+        $request->validated();
 
+        $user = User::find($request->id);
+        $user->wallet->balance = $request->balance;
+        $user->wallet->deposit = $request->deposit;
+
+        $user->wallet->save();
+
+        return back()->with('alert_info','User account has been topup successfully');
     }
 
     /**
