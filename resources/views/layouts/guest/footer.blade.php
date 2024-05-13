@@ -19,7 +19,7 @@
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="{{route('profile.index')}}">
                 <i class="icon icon-user"></i>
                 Profile
             </a>

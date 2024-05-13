@@ -7,6 +7,7 @@ Route::prefix('user')->group(function () {
         Route::resource('/withdraw', \App\Http\Controllers\guest\WithdrawController::class);
         Route::resource('/referral', \App\Http\Controllers\guest\ReferralController::class);
         Route::resource('/investment', \App\Http\Controllers\guest\InvestmentController::class);
+        Route::resource('/profile', \App\Http\Controllers\guest\ProfileController::class);
 
         Route::get('/logout', function () {
             auth()->logout();
