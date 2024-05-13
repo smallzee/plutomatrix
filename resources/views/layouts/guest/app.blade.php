@@ -16,6 +16,10 @@
 
     <script type="text/javascript" src="{{asset('assets/guest/js/jquery.min.js')}}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="https://widgets.coingecko.com/coingecko-coin-price-marquee-widget.js"></script>
+
+{{--    @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
 </head>
 <body>
 
@@ -23,7 +27,7 @@
 
 <div class="header-style2 fixed-top bg-menuDark">
     <div class="d-flex justify-content-between align-items-center">
-        <a class="box-account" href="{{route('dashboard.index')}}">
+        <a class="box-account" href="{{url('user/dashboard')}}">
             <img src="{{static_asset('avt/avt2.jpg.png')}}" alt="img" class="avt">
             <div class="info">
                 <p class="text-xsmall text-secondary">Welcome back!</p>
@@ -35,12 +39,14 @@
 
 <div class="pt-68 pb-80">
     <div class="bg-menuDark tf-container">
+
+            <coingecko-coin-price-marquee-widget  coin-ids="bitcoin,ethereum,eos,dogecoin,ripple,litecoin,tron" currency="usd" background-color="#fff" locale="en"></coingecko-coin-price-marquee-widget>
         <div class="pt-12 pb-12 ">
             <h5><span>Balance</span></h5>
             <h1 class="mt-16"><a href="#">${{ number_format(auth()->user()->wallet->balance,2) }}</a></h1>
             <ul class="mt-16 grid-4 m--16">
                 <li>
-                    <a href="" class="tf-list-item d-flex flex-column gap-8 align-items-center">
+                    <a href="{{route('investment.create')}}" class="tf-list-item d-flex flex-column gap-8 align-items-center">
                         <span class="box-round bg-surface d-flex justify-content-center align-items-center"><i class="icon icon-way"></i></span>
                         Invest
                     </a>
@@ -128,7 +134,6 @@
 
         </div>
     </div>
-
     @stack('content')
 </div>
 
