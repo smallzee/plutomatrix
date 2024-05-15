@@ -82,62 +82,79 @@
 
     <div class="bg-menuDark tf-container">
         <div class="pt-12  pb-12 mt-3">
-            <div class="swiper tf-swiper swiper-wrapper-r mt-16" data-space-between="16" data-preview="2.8" data-tablet="2.8" data-desktop="3">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#" class="coin-box d-block">
-                            <div class="coin-logo">
-                                <div class="title">
-                                    <h6>Deposit</h6>
-                                </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <a href="#" class="coin-box d-block mb-3">
+                        <div class="coin-logo">
+                            <div class="title">
+                                <h6>Deposit</h6>
                             </div>
-                            <div class="mt-8 mb-8 coin-chart">
-                                <div id="line-chart-1"></div>
+                        </div>
+                        <div class="mt-8 mb-8 coin-chart">
+                            <div id="line-chart-1"></div>
+                        </div>
+                        <div class="coin-price d-flex justify-content-between">
+                            <h5>${{ number_format(auth()->user()->wallet->deposit,2) }}</h5>
+                        </div>
+                        <div class="blur bg1">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-sm-3">
+                    <a href="#" class="coin-box d-block mb-3">
+                        <div class="coin-logo">
+                            <div class="title">
+                                <h6>ROI</h6>
                             </div>
-                            <div class="coin-price d-flex justify-content-between">
-                                <h5>${{ number_format(auth()->user()->wallet->deposit,2) }}</h5>
+                        </div>
+                        <div class="mt-8 mb-8 coin-chart">
+                            <div id="line-chart-1"></div>
+                        </div>
+                        <div class="coin-price d-flex justify-content-between">
+                            <h5>${{ number_format(auth()->user()->wallet->profit,2) }}</h5>
+                        </div>
+                        <div class="blur bg4">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-sm-3">
+                    <a href="#" class="coin-box d-block mb-3">
+                        <div class="coin-logo">
+                            <div class="title">
+                                <h6>Investment</h6>
                             </div>
-                            <div class="blur bg1">
+                        </div>
+                        <div class="mt-8 mb-8 coin-chart">
+                            <div id="line-chart-2"></div>
+                        </div>
+                        <div class="coin-price d-flex justify-content-between">
+                            <h5>${{ number_format(auth()->user()->wallet->active_investment,2) }}</h5>
+                        </div>
+                        <div class="blur bg2">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-sm-3">
+                    <a href="#" class="coin-box d-block mb-3">
+                        <div class="coin-logo">
+                            <div class="title">
+                                <h6>Withdrawn</h6>
                             </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="coin-box d-block">
-                            <div class="coin-logo">
-                                <div class="title">
-                                    <h6>Investment</h6>
-                                </div>
-                            </div>
-                            <div class="mt-8 mb-8 coin-chart">
-                                <div id="line-chart-2"></div>
-                            </div>
-                            <div class="coin-price d-flex justify-content-between">
-                                <h5>${{ number_format(auth()->user()->wallet->active_investment,2) }}</h5>
-                            </div>
-                            <div class="blur bg2">
-                            </div>
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" class="coin-box d-block">
-                            <div class="coin-logo">
-                                <div class="title">
-                                    <h6>Withdrawn</h6>
-                                </div>
-                            </div>
-                            <div class="mt-8 mb-8 coin-chart">
-                                <div id="line-chart-3"></div>
-                            </div>
-                            <div class="coin-price d-flex justify-content-between">
-                                <h5>${{ number_format(auth()->user()->wallet->total_withdrawn,2) }}</h5>
-                            </div>
-                            <div class="blur bg3">
-                            </div>
-                        </a>
-                    </div>
+                        </div>
+                        <div class="mt-8 mb-8 coin-chart">
+                            <div id="line-chart-3"></div>
+                        </div>
+                        <div class="coin-price d-flex justify-content-between">
+                            <h5>${{ number_format(auth()->user()->wallet->total_withdrawn,2) }}</h5>
+                        </div>
+                        <div class="blur bg3">
+                        </div>
+                    </a>
                 </div>
             </div>
-
 
         </div>
     </div>

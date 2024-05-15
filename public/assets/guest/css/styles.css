@@ -1933,6 +1933,10 @@ input[type=text].ip-style2 {
   background-color: #0082FE;
   opacity: 0.4;
 }
+.coin-box .blur.bg4 {
+    background-color: #0082FE;
+    opacity: 0.4;
+}
 .coin-box .apexcharts-canvas {
   z-index: 1;
 }
