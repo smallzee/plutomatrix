@@ -17,12 +17,21 @@
                         <select id="payment_method" name="payment_method" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected>Choose a payment method</option>
                             @foreach(\App\Models\PaymentMethod::all() as $value)
-                                <option value="{{ $value->id }}" data-wallet="{{ $value->wallet_address }}">{{ ucwords($value->name) }}</option>
+                                <option value="{{ $value->id }}" data-network="{{ $value->network }}" data-wallet="{{ $value->wallet_address }}">{{ ucwords($value->name) }}</option>
                             @endforeach
                         </select>
 
                         <x-input-error :messages="$errors->get('payment_method')" class="mt-2" />
                     </div>
+
+                    <div class="d-flex mt-3 justify-content-between align-items-center">
+                        <span>Network :</span>
+                    </div>
+                    <div class="mt-12 box-input-field mb-3">
+                        <input type="text" required name="network" id="network" placeholder="Network"  readonly class="clear-ip ip-style2">
+                        <i class="icon-close"></i>
+                    </div>
+                    <x-input-error :messages="$errors->get('wallet_address')" class="mt-2" />
 
                     <div class="d-flex mt-3 justify-content-between align-items-center">
                         <span>Wallet Address To Send Deposit To:</span>
@@ -74,6 +83,7 @@
     <script>
         $('#payment_method').change(function(){
             $("#wallet_address").val($(this).children('option:selected').data('wallet'));
+            $("#network").val($(this).children('option:selected').data('network'));
         });
     </script>
 @endpush
