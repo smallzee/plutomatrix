@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('payment_method_id');
             $table->double('amount')->default(0);
             $table->text('image');
-            $table->enum('status',['processing','failed','cancelled','completed'])->default('processing');
+            $table->enum('status',['processing','failed','cancelled','completed','pending'])->default('processing');
             $table->text('wallet_address')->nullable();
             $table->string('reference');
             $table->timestamps();

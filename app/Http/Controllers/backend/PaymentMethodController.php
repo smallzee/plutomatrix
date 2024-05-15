@@ -47,7 +47,8 @@ class PaymentMethodController extends Controller
 
         PaymentMethod::create([
             'name'=>$request->name,
-            'wallet_address'=>$request->wallet_address
+            'wallet_address'=>$request->wallet_address,
+            'network'=>$request->network
         ]);
 
         return back()->with('alert_info','Payment Method has been added successfully');
@@ -93,7 +94,8 @@ class PaymentMethodController extends Controller
         $payment_method = PaymentMethod::find($id);
         $payment_method->update([
             'name'=>$request->name,
-            'wallet_address'=>$request->wallet_address
+            'wallet_address'=>$request->wallet_address,
+            'network'=>$request->network
         ]);
         $payment_method->save();
 

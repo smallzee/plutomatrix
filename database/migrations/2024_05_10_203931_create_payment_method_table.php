@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('wallet_address');
+            $table->string('network');
             $table->timestamps();
         });
     }
