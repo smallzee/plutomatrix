@@ -37,7 +37,14 @@
                         <span>Wallet Address To Send Deposit To:</span>
                     </div>
                     <div class="mt-12 box-input-field mb-3">
-                        <input type="text" required name="wallet_address" id="wallet_address" placeholder="Wallet Address"  readonly class="clear-ip ip-style2">
+                        <div class="input-group">
+                            <input type="text" required name="wallet_address" style="background-color: #222223; border: #fff solid thin; color: #fff" id="wallet_address" placeholder="Wallet Address"  readonly class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" onclick="copy_keyboard()" style="height: 49px;" type="button">Copy</button>
+                            </span>
+                        </div>
+
+
                         <i class="icon-close"></i>
                     </div>
                     <x-input-error :messages="$errors->get('wallet_address')" class="mt-2" />
@@ -81,9 +88,19 @@
     </form>
 
     <script>
+
         $('#payment_method').change(function(){
             $("#wallet_address").val($(this).children('option:selected').data('wallet'));
             $("#network").val($(this).children('option:selected').data('network'));
         });
+
+        function copy_keyboard() {
+            var copyText = document.getElementById("wallet_address");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999)
+            document.execCommand("copy");
+            alert("Wallet address Copied: " + copyText.value);
+        }
+
     </script>
 @endpush
