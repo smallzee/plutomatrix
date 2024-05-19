@@ -94,7 +94,9 @@ class DepositController extends Controller
         $deposit->status = $status;
         $deposit->save();
 
-        Mail::to(get_settings('official_email'))->send(new DepositTransactions($deposit->user->name,$deposit->payment_method->name,$deposit->amount,$status,$deposit->reference,$deposit->user->email));
+        Mail::to($deposit->user->email)->send(new DepositTransactions($deposit->user->name,$deposit->payment_method->name,$deposit->amount,$status,$deposit->reference,$deposit->user->email));
+
+        return back()->with('alert_success','User deposit has been on '.$status);
     }
 
     /**

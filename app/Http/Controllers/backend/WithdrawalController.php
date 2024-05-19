@@ -94,7 +94,9 @@ class WithdrawalController extends Controller
         $withdrawal->status = $status;
         $withdrawal->save();
 
-        Mail::to(get_settings('official_email'))->send(new WithrawalTransaction($withdrawal->user->name,$withdrawal->payment_method->name,$withdrawal->amount,$status,$withdrawal->reference,$withdrawal->user->email));
+        Mail::to($withdrawal->user->email)->send(new WithrawalTransaction($withdrawal->user->name,$withdrawal->payment_method->name,$withdrawal->amount,$status,$withdrawal->reference,$withdrawal->user->email));
+
+        return back()->with('alert_success','User withdrawal has been on '.$status);
     }
 
     /**
