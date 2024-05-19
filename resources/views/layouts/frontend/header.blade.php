@@ -21,11 +21,11 @@
                                 </li>
 
                                 <li class="menu-item">
-                                    <a href="#">Our Service</a>
+                                    <a href="{{url('services')}}">Our Service</a>
                                 </li>
 
                                 <li class="menu-item">
-                                    <a href="#">Packages</a>
+                                    <a href="{{url('packages')}}">Packages</a>
                                 </li>
 
                                @if(!auth()->check())
