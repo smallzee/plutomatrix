@@ -35,7 +35,7 @@
         <x-primary-button class="ml-3 mt-4">
             {{ __('Log in') }}
         </x-primary-button>
-        <p class="mt-20 text-center text-small">Already have a Account? &ensp;<a href="{{route('register')}}">Sign up</a></p>
+        <p class="mt-20 text-center text-small">Dont have an Account? &ensp;<a href="{{route('register')}}">Sign up</a></p>
     </form>
 
 </x-guest-layout>

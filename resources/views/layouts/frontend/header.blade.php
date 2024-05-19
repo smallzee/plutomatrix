@@ -33,15 +33,15 @@
                                         <a href="{{route('register')}}">Register</a>
                                     </li>
                                @endif
+
+                                @if(auth()->check())
+                                    <li class="menu-item">
+                                        <a href="{{url('user/dashboard')}}">Dashboard</a>
+                                    </li>
+                                @endif
                             </ul>
                         </nav>
-                        @if(auth()->check())
-                            <div class="group-button">
-                                <a class="btn-action" href="{{url('user/dashboard')}}">
-                                    <span>Dashboard</span>
-                                </a>
-                            </div>
-                        @else
+                        @if(!auth()->check())
                             <div class="group-button">
                                 <a class="btn-action" href="{{route('login')}}">
                                     <span>LOGIN</span>
