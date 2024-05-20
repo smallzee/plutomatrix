@@ -32,6 +32,10 @@
                                     <li class="menu-item">
                                         <a href="{{route('register')}}">Register</a>
                                     </li>
+
+                                    <li class="menu-item">
+                                        <a href="{{route('login')}}">Login</a>
+                                    </li>
                                @endif
 
                                 @if(auth()->check())
@@ -41,13 +45,6 @@
                                 @endif
                             </ul>
                         </nav>
-                        @if(!auth()->check())
-                            <div class="group-button">
-                                <a class="btn-action" href="{{route('login')}}">
-                                    <span>LOGIN</span>
-                                </a>
-                            </div>
-                        @endif
                         <div class="mobile-button"><span></span></div>
                     </div>
                 </div>
