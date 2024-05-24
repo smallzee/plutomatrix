@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\FrontendController::class,'index'])->name('home');
 Route::get('/packages', [\App\Http\Controllers\FrontendController::class,'packages'])->name('packages');
 Route::get('/services', [\App\Http\Controllers\FrontendController::class,'services'])->name('services');
+Route::get('/hooks', [\App\Http\Controllers\HookController::class,'hooks'])->name('hooks');
 
 require __DIR__.'/auth.php';
 require __DIR__.'/guest.php';
