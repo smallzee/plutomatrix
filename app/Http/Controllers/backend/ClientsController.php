@@ -50,6 +50,9 @@ class ClientsController extends Controller
         $user = User::find($request->id);
         $user->wallet->balance = $request->balance;
         $user->wallet->deposit = $request->deposit;
+        $user->wallet->total_withdrawn = $request->total_withdrawn;
+        $user->wallet->active_investment = $request->active_investment;
+        $user->wallet->profit = $request->profit;
 
         $user->wallet->save();
 
