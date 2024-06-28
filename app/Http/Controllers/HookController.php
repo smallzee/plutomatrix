@@ -11,7 +11,7 @@ class HookController extends Controller
 
     public function hooks()
     {
-        $investment = Investments::where('duration','>=',time())->inRandomOrder()->first();
+        $investment = Investments::where('status','active')->inRandomOrder()->first();
 
         if ($investment){
             $duration = $investment->duration;
